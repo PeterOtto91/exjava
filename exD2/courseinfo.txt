@@ -1,0 +1,4 @@
+shdfimzefl 7 78.5 true
+Number of instructors = 3
+Price of Course = 549.5
+The price appears to be OK
