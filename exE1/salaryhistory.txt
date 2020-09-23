@@ -1,0 +1,3 @@
+Salary of Wim at 31 is 2266.0
+Salary of Wim at 36 is 2333.98
+Salary of Wim at 41 is 2403.9994
