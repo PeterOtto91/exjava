@@ -6,11 +6,11 @@ public class Course {
 	private String courseTitle;
 	private int courseNumberDays;
 	private double coursePriceDay;
-	private boolean courseKnowledge;
+	private boolean courseKnowledge = false;
 	private ArrayList<String> courseInstructors = new ArrayList<String>();
 
 
-	public Static void Course (String courseTitle, int courseNumberDays, double coursePriceDay, boolean courseKnowledge, Arraylist courseInstructors){
+	public Course (String courseTitle, int courseNumberDays, double coursePriceDay, boolean courseKnowledge, ArrayList courseInstructors) throws NumberFormatException {
 		this.courseTitle = courseTitle;
 		this.courseNumberDays = courseNumberDays;
 		this.coursePriceDay = coursePriceDay;
@@ -30,7 +30,7 @@ public class Course {
 		return this.courseNumberDays;
 	}
 	
-	public void setCourseTitle(int days){
+	public void setCourseTitle(int days) throws NumberFormatException{
 		this.courseNumberDays = days;
 	}
 	
@@ -38,7 +38,7 @@ public class Course {
 		return this.coursePriceDay;
 	}
 	
-	public void setCoursePriceDay(double price){
+	public void setCoursePriceDay(double price) throws NumberFormatException{
 		this.coursePriceDay = price;
 	}
 	
@@ -54,23 +54,61 @@ public class Course {
 		return this.courseInstructors;
 	}
 	
-	public void setCourseInstructors(Arraylist instructors){
+	public void setCourseInstructors(ArrayList instructors){
 		this.courseInstructors = instructors;
 	}
 	
 	
 	
-	
-	public static void addInstructor(String newInstructor){
-		courseInstructors.add(newInstructor);
+	public void addInstructor(String newInstructor){
+		this.courseInstructors.add(newInstructor);
 		
 	}
 	
-	public static void removeInstructor(String rInstructor){
-		courseInstructors.remove(rInstructor);
+	public void removeInstructor(String rInstructor){
+		this.courseInstructors.remove(rInstructor);
 	}
 	
 	
+	
+	public void printInfo() {
+		
+		System.out.println ("Course Info");
+		System.out.println ("-----------");
+		System.out.println ("Title:                    " + this.courseTitle);
+		System.out.println ("Number of Days:           " + this.courseNumberDays);
+		System.out.println ("Price per Day:            " + this.coursePriceDay);
+		System.out.println ("Preliminary Requirements? " + this.courseKnowledge);
+		System.out.println ("Number of instructors =   " + this.courseInstructors.size());
+		System.out.println (" ");
+		
+		
+		int nItem = 0;
+		for(int i = 0; i < courseInstructors.size(); i++) {
+			
+			nItem++;
+			System.out.println ("Instructor " + nItem + " = " + this.courseInstructors.get(i));
+			
+		}	
+		
+	}
+	
+	
+	public double calculateTotalPrice () {
+	
+		double priceOfCourse = this.courseNumberDays * this.coursePriceDay;
+		double totalPriceOfCourse = 0;
+		
+		if ((this.courseNumberDays > 3) && (this.courseKnowledge)) {
+			totalPriceOfCourse = priceOfCourse;
+		}
+		else {
+			totalPriceOfCourse = priceOfCourse + (priceOfCourse / 100 * 21);
+		}
+		
+		return totalPriceOfCourse;
+	
+	}
 	
 	
 }
